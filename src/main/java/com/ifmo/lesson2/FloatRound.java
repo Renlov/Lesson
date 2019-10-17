@@ -1,4 +1,4 @@
-package com.ifmo.lesson1.lesson2;
+package com.ifmo.lesson2;
 
 public class FloatRound {
     /*
@@ -15,7 +15,7 @@ public class FloatRound {
 
     public static float round(float n) {
         // TODO implement
-
+        if ()
         return 0;
     }
 }

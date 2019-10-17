@@ -1,5 +1,4 @@
-package com.ifmo.lesson1.lesson2;
-
+package com.ifmo.lesson2;
 public class IntsOrdering {
     /*
      В три переменные a, b и c явно записаны программистом три целых попарно неравных

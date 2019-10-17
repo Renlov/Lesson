@@ -1,4 +1,4 @@
-package com.ifmo.lesson1.lesson2;
+package com.ifmo.lesson2;
 
 public class First55 {
     /*
@@ -6,5 +6,10 @@ public class First55 {
      */
     public static void main(String[] args) {
         // TODO implement
+        int b = -1;
+        for (int i = 0; i <55; i++) {
+            b +=2;
+            System.out.println(b);
+        }
     }
 }
