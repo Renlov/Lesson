@@ -23,8 +23,14 @@ public class PrimeNumber {
     }
 
     public static boolean isPrime(int n) {
-        // TODO implement
+        boolean a = true;
+        for(int i=n/n;i>=1;i--){
+            if(n%i==0&i!=1){
+                return a;
+            }
+            if(i==1) return a = false;
 
-        return false;
+        }
+        return a;
     }
 }
