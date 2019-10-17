@@ -15,6 +15,7 @@ public class IsEven {
         // TODO implement
         // Допустимые строки: "Четное" или "Нечетное"
 
+
         return "Четное";
     }
 }
