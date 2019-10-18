@@ -35,6 +35,8 @@ public class SquareEquation {
         } else {
             System.out.println("Корней нет");
 
+
+
         }
         return null;
     }

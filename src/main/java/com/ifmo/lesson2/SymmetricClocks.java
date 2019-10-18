@@ -11,8 +11,16 @@ public class SymmetricClocks {
     }
 
     public static int symmetricTimes() {
-        // TODO implement
+        int count = 0;
+        for (int i = 0; i<23; i++) {
+            int one = i/10;
+            int two = i%10;
+            int num = two * 10 + one;
+            if( num >= 0 && num <= 59 )
+                count++;
+        }
 
-        return 0;
+
+        return count;
     }
 }

@@ -1,5 +1,7 @@
 package com.ifmo.lesson2;
 
+import java.util.Random;
+
 public class WallClock {
     /*
     На некотором предприятии инженер Петров создал устройство, на табло которого
@@ -38,14 +40,37 @@ public class WallClock {
     }
 
     public static int randomSecond() {
-        // TODO implement
-
-        return 0;
+        Random rnd = new Random();
+        int i = rnd.nextInt(28800);
+        return i;
     }
 
-    public static String remainingHours(int rndSecond) {
-        // TODO implement
 
+    public static String remainingHours(int rndSecond) {
+        if (rndSecond==28800 ){
+            System.out.println(rndSecond);
+        return "Осталось 8 часов"; }
+        if (rndSecond<=28799 && rndSecond >=25200){
+            System.out.println(rndSecond);
+        return "Осталось 7 часов";}
+        if (rndSecond<=25199 && rndSecond >=21600){
+            System.out.println(rndSecond);
+        return "Осталось 6 часов";}
+        if (rndSecond<=21599 && rndSecond >=18000){
+            System.out.println(rndSecond);
+        return "Осталось 5 часов";}
+        if (rndSecond<=17999 && rndSecond >=14400){
+            System.out.println(rndSecond);
+            return "Осталось 4 часа";}
+        if (rndSecond<=14399 && rndSecond >=10800){
+            System.out.println(rndSecond);
+            return "Осталось 3 часа";}
+        if (rndSecond<=10799 && rndSecond >=7200){
+            System.out.println(rndSecond);
+            return  "Осталось 2 часа";}
+        if (rndSecond<=7199 && rndSecond >=3600){
+            System.out.println(rndSecond);
+            return  "Остался 1 час";}
         return "Осталось менее часа";
     }
 }

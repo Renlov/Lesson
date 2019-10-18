@@ -14,8 +14,12 @@ public class UnluckyNumbers {
     }
 
     public static int unluckyNumbersCount() {
-        // TODO implement
+        int count = 0;
+        String str;
+        for(int i=1; i<100000; ++i) {
+            if (Integer.toString(i).matches(".*(?:13|4).*")) count++;
 
-        return 0;
+        }
+        return count;
     }
 }
