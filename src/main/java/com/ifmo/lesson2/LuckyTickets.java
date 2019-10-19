@@ -15,8 +15,17 @@ public class LuckyTickets {
     }
 
     public static int luckyTickets() {
-        // TODO implement
+        int count = 0;
+        for (int i = 000001; i<1000000 ; i++) {
+            int one = i/100000;
+            int two = (i%100000)/10000;
+            int three = (i%10000)/1000;
+            int four = (i%1000)/100;
+            int five = (i%100)/10;
+            int six = i%10;
+            if (one+two+three == four+five+six) count++;
+        }
 
-        return 0;
+        return count;
     }
 }
