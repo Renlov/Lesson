@@ -10,6 +10,7 @@ public class DivisionRemainder {
     public static void main(String[] args) {
         int q = 21;
         int w = 8;
+        // coment
 
         calculate(q, w);
     }
