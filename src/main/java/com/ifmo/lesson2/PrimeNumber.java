@@ -24,12 +24,11 @@ public class PrimeNumber {
 
     public static boolean isPrime(int n) {
         boolean a = true;
-        for(int i=n/n;i>=1;i--){
+        for(int i=(int)Math.sqrt(n);i>=1;i--){
             if(n%i==0&i!=1){
-                return a;
+                return a =true;
             }
-            if(i==1) return a = false;
-
+            if(i==1) return a =false;
         }
         return a;
     }
