@@ -21,8 +21,10 @@ public class BiggestInRandom {
     public static int threeDigitRandom() {
         // TODO implement
         Random rnd = new Random();
-        int i = rnd.nextInt(1000);
-        return i;
+        int high = 999;
+        int low = 100;
+        int j = rnd.nextInt(high - low) + low;
+        return j;
     }
 
     public static String largestDigit(int rnd) {
