@@ -10,6 +10,6 @@ public class ThreeDigitsSum {
     }
 
     public static int sum(int n) {
-        return (n/100 + n/10 +n%10);
+        return (n/100 + n%100/10 +n%10);
     }
 }
