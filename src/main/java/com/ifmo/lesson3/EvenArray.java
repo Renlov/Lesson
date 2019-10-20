@@ -12,10 +12,17 @@ public class EvenArray {
      */
     public static void main(String[] args) {
         int[] evenArray = evenArray();
-        System.out.println(Arrays.toString(evenArray));
-        // TODO implement
-    }
+        for (int i = 0; i < 10; i++) {
+            System.out.print(evenArray[i] + " ");
+            if (i == 9) System.out.println("\n");
+            // TODO implement
+        }
+        for (int i = 0; i <10; i++) {
+            System.out.println(evenArray[i]);
 
+
+        }
+    }
     public static int[] evenArray() {
         int[] arr = new int[10];
         for (int i = 2, j = 0; i <=20 ; i+=2, j++) {
