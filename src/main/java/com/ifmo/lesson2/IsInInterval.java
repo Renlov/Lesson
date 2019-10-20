@@ -21,14 +21,15 @@ public class IsInInterval {
     public static int randomInt() {
         // TODO implement
         Random rnd = new Random();
-        int i = rnd.nextInt(151)+5;
+        int low = 5, higt =155;
+        int i = rnd.nextInt(higt-low)+low;
         return i;
 
     }
 
     public static String isInInterval(int rnd) {
-        if(25<rnd && rnd <100) return "не содержится в интервале (25,100)";
-        else return "содержится в интервале (25,100)";
+        if(25 < rnd  && rnd < 100) return "содержится в интервале (25,100)";
+        else return "не содержится в интервале (25,100)";
 
     }
 
