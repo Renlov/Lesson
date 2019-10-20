@@ -17,7 +17,6 @@ public class IntsOrdering {
      */
     public static void main(String[] args) {
         int a = 3, b = 9, c = -1;
-
         String ordering = ordering(a, b, c);
 
         System.out.println(ordering);
@@ -29,17 +28,44 @@ public class IntsOrdering {
         int second = 0;
         int third = 0;
 
-        if (a<b && a<c) first = a;
-        else if (b<c && b<a) first = b;
-        else first = c;
+        if(a<b&&a<c) {
+            if(b<c) {
+                first = a;
+                second = b;
+                third = c;
+            }
+            else {
+                first = a;
+                second = c;
+                third = b;
+            }
+        }
 
-        if (a<b && a>c) second = a;
-        else if (b<c && b>a) second = b;
-        else second = c;
+        if(b<a&&b<c) {
+            if(a<c) {
+                first = b;
+                second = a;
+                third = c;
+            }
+            else {
+                first = b;
+                second = c;
+                third = a;
+            }
+        }
 
-        if (a>b && a>c) third = a;
-        else if (b>c && b>a) third = b;
-        else third = c;
+        if(c<a&&c<b) {
+            if(a<b) {
+                first = c;
+                second = a;
+                third = b;
+            }
+            else {
+                first = c;
+                second = b;
+                third = a;
+            }
+        }
 
         return "Числа в переменных a, b и c: " + a + ", " + b + ", " + c + "\n" +
                 "Возрастающая последовательность: "  + first + ", " + second + ", " + third;
