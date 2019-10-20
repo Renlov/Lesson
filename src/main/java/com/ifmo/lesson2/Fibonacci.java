@@ -8,9 +8,12 @@ public class Fibonacci {
      */
     public static void main(String[] args) {
         int a = 0;
-        for (int i = 0; i <11; i++) {
-            a+=i;
+        int b = 1;
+        for (int i = 2; i <= 11; ++i) {
+            int next = a + b;
+            a = b;
+            b = next;
         }
-        System.out.println(a);
+        System.out.println(b);
     }
 }
