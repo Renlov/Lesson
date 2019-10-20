@@ -25,19 +25,16 @@ public class SquareEquation {
         double[] myArray = new double[2];
         double d = Math.pow(b, 2) - 4 * a * c;
         if (d > 0) {
-            double x = -b + Math.sqrt(Math.pow(b, 2) - 4 * a * c);
-            double y = -b - Math.sqrt(Math.pow(b, 2) - 4 * a * c);
-            System.out.println(x);
-            System.out.println(y);
+            double x = ((-1*b) + Math.sqrt(d))/(2*a);;
+            double y = ((-1*b) - Math.sqrt(d))/(2*a);;
+            myArray[0] = x;
+            myArray[1] =y;
         } else if (d == 0) {
             double x = -b / 2 * a;
-            System.out.println(x);
+            myArray[0] = x;
         } else {
-            System.out.println("Корней нет");
-
-
-
+            return null;
         }
-        return null;
+        return myArray;
     }
 }
