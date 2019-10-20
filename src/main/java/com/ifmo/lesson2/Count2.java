@@ -17,11 +17,12 @@ public class Count2 {
     public static int count2() {
         // TODO implement
         int a = 0;
-        for (int i = 0; i <= 5000; i++) {
+        for (int i = 00001; i <= 50000; i++) {
             int j = i;
             while (j > 0) {
-                if (j % 10 == 2)
+                if (j % 10 == 2){
                     a++;
+                    break;}
                 j = j / 10;
             }
         }
