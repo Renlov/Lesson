@@ -1,5 +1,8 @@
 package com.ifmo.lesson3;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class TwoArrays {
     /*
      Создайте 2 массива из 5 случайных целых чисел из отрезка [0;5] каждый, выведите
@@ -10,24 +13,36 @@ public class TwoArrays {
     public static void main(String[] args) {
         int[] randomNumbers1 = randomNumbers();
         int[] randomNumbers2 = randomNumbers();
-
+        System.out.println(Arrays.toString(randomNumbers1));
+        System.out.println(Arrays.toString(randomNumbers2));
         // TODO implement
 
         int average1 = average(randomNumbers1);
         int average2 = average(randomNumbers2);
+        if (average1> average2) System.out.println("Среднее арифметическое для первого больше, чем для второго");
+        if (average1< average2) System.out.println("Среднее арифметическое для второго больше, чем для первого");
+        if (average1 == average2) System.out.println("Средние арифметические равны");
 
         // TODO implement
     }
 
     public static int[] randomNumbers() {
-        // TODO implement
-
-        return new int[0];
+        Random rnd = new Random();
+        int low = 0, high = 5;
+        int[] arr = new int[5];
+        for (int i = 0; i <arr.length; i++) {
+            int j = rnd.nextInt(high - low) + low;
+            arr[i] = j;
+        }
+        return arr;
     }
 
     public static int average(int[] randomNumbers) {
-        // TODO implement
+        int count = 0;
+        for (int i = 0; i <randomNumbers.length; i++) {
+            count+=randomNumbers[i];
+        }
 
-        return 0;
+        return count/randomNumbers.length;
     }
 }
