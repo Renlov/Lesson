@@ -9,15 +9,25 @@ public class LinkedList {
     /** Ссылка на первый элемент списка. */
     private Item head;
 
+
     /**
      * Добавляет значение в конец списка.
-     *
      * @param val Значение, которое будет добавлено.
      */
     public void add(Object val) {
-        // TODO implement
-    }
+        if (head == null){ head = new Item(val); }
+        else {
+            Item item = head;
+            while (true) {
+                if(item.next == null){
+                    item.next = new Item(val);
 
+                    return;
+                }
+                item = item.next;
+            }
+        }
+    }
     /**
      * Извлекает значение из списка по индексу.
      *
@@ -26,7 +36,29 @@ public class LinkedList {
      * или {@code null}, если не найдено.
      */
     public Object get(int i) {
-        // TODO implement
+        if (i == 0) {
+            if (head != null)
+                return head.value;
+//            head = new Item(val);
+        }
+        else {
+            int cnt = 0;
+            Item item = head;
+            while (true) {
+                if(item.next == null){
+                    item.next = new Item(val);
+
+                    return;
+                }
+                item = item.next;
+                cnt++;
+            }
+        }
+
+        for (int j = 0; j <= i; j++) {
+            if (head == null) return null;
+            else head = head.next;
+        }
 
         return null;
     }
@@ -39,8 +71,24 @@ public class LinkedList {
      * @return Удаленное значение или {@code null}, если не найдено.
      */
     public Object remove(int i) {
-        // TODO implement
+        head = new Item(i);
+        for (int j = 0; j <= i; j++) {
+        }
+        while (head != null){
+            if (head.value.equals(head)){
+
+            }
+        }
 
         return null;
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        list.add("one");
+        list.add("two");
+        list.add("three");
+        list.add("four");
     }
 }
