@@ -6,28 +6,28 @@ package com.ifmo.lesson4;
  * оканчивается ссылкой со значением {@code null}.
  */
 public class LinkedList {
-    /** Ссылка на первый элемент списка. */
+    /**
+     * Ссылка на первый элемент списка.
+     */
     private Item head;
-
 
     /**
      * Добавляет значение в конец списка.
+     *
      * @param val Значение, которое будет добавлено.
      */
     public void add(Object val) {
-        if (head == null){ head = new Item(val); }
-        else {
+        if (head == null) {
+            head = new Item(val);
+        } else {
             Item item = head;
-            while (true) {
-                if(item.next == null){
-                    item.next = new Item(val);
-
-                    return;
-                }
+            while (item.next != null) {
                 item = item.next;
             }
+            item.next = new Item(val);
         }
     }
+
     /**
      * Извлекает значение из списка по индексу.
      *
@@ -36,30 +36,11 @@ public class LinkedList {
      * или {@code null}, если не найдено.
      */
     public Object get(int i) {
-        if (i == 0) {
-            if (head != null)
-                return head.value;
-//            head = new Item(val);
+        if (i < 0) return null;
+        Item item = found(i);
+        if (item != null) {
+            return item.value;
         }
-        else {
-            int cnt = 0;
-            Item item = head;
-            while (true) {
-                if(item.next == null){
-                    //item.next = new Item(val);
-
-                    //return;
-                }
-                item = item.next;
-                cnt++;
-            }
-        }
-
-        for (int j = 0; j <= i; j++) {
-            if (head == null) return null;
-            else head = head.next;
-        }
-
         return null;
     }
 
@@ -71,24 +52,37 @@ public class LinkedList {
      * @return Удаленное значение или {@code null}, если не найдено.
      */
     public Object remove(int i) {
-        head = new Item(i);
-        for (int j = 0; j <= i; j++) {
-        }
-        while (head != null){
-            if (head.value.equals(head)){
+        if (i < 0) return null;
 
+        if (i == 0) {
+            Object val = head.value;
+            head = null;
+            return val;
+        }
+
+        Item item = found(i - 1);
+        if (item != null) {
+            if (item.next != null) {
+                Object val = item.next.value;
+                item.next = item.next.next;
+                return val;
             }
         }
-
         return null;
     }
 
-    public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-
-        list.add("one");
-        list.add("two");
-        list.add("three");
-        list.add("four");
+    /**
+     * Ищет объект с заданным индексом
+     * @param i Индекс, по которому будет производится поиск.
+     * @return Объект типа Item или {@code null}, если не найден
+     */
+    private Item found(int i) {
+        Item item = head;
+        for (int j = 0; j <= i; j++) {
+            if (item == null) return null;
+            if (j == i) return item;
+            item = item.next;
+        }
+        return null;
     }
 }
