@@ -6,11 +6,13 @@ public class First20 {
      16 32 64 128 ….
      */
     public static void main(String[] args) {
-        int b = 1;
-        for (int i = 0; i <20 ; i++) {
-            b*=2;
-                    System.out.print(b+" ");
-        }
-        }
+        printSequence(20);
     }
 
+    private static void printSequence(int lastNumber){
+
+        for (int i = 0; i < lastNumber; i++) {
+            System.out.println(1 << i);
+        }
+    }
+}
