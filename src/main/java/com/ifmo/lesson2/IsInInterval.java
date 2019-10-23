@@ -14,23 +14,21 @@ public class IsInInterval {
         int rnd = randomInt();
 
         String inInterval = isInInterval(rnd);
-        System.out.println("Число "+ randomInt()+" " + isInInterval(rnd));
-        // TODO implement
+
+        System.out.println(inInterval);
     }
 
     public static int randomInt() {
-        // TODO implement
-        Random rnd = new Random();
-        int low = 5, higt =155;
-        int i = rnd.nextInt(higt-low)+low;
-        return i;
-
+        return new Random().nextInt(150) + 5;
     }
 
     public static String isInInterval(int rnd) {
-        if(25 < rnd  && rnd < 100) return "содержится в интервале (25,100)";
-        else return "не содержится в интервале (25,100)";
+        String str = " не";
+        if (rnd > 25 && rnd < 100) {
+            str = "";
+        }
 
+        return String.format("Число %d%s содержится в интервале (25,100)", rnd, str);
     }
 
 }

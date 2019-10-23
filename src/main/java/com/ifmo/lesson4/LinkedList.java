@@ -46,9 +46,9 @@ public class LinkedList {
             Item item = head;
             while (true) {
                 if(item.next == null){
-                    item.next = new Item(val);
+                    //item.next = new Item(val);
 
-                    return;
+                    //return;
                 }
                 item = item.next;
                 cnt++;
