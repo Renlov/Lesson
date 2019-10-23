@@ -12,15 +12,27 @@ public class SymmetricClocks {
 
     public static int symmetricTimes() {
         int count = 0;
-        for (int i = 0; i<23; i++) {
-            int one = i/10;
-            int two = i%10;
-            int num = two * 10 + one;
-            if( num >= 0 && num <= 59 )
-                count++;
+        for (int i = 0; i < 24; i++) {
+            for (int j = 0; j < 60; j++) {
+                if (appendZero(String.valueOf(i)).equals(reverseString(appendZero(String.valueOf(j))))){
+                    count++;
+                }
+            }
         }
 
-
         return count;
+    }
+
+    private static String appendZero(String str){
+        if(str.length() >= 2) return str;
+        return "0"+str;
+    }
+
+    private static String reverseString(String str){
+        StringBuilder builder = new StringBuilder();
+        for (int i = str.length() - 1; i >= 0; i--) {
+            builder.append(str.charAt(i));
+        }
+        return builder.toString();
     }
 }
