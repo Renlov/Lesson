@@ -89,5 +89,6 @@ public class LinkedList {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 
+        list.add(new Rectangle(10.0, 12.0));
     }
 }
