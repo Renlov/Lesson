@@ -92,6 +92,5 @@ public class LinkedList {
         LinkedList list = new LinkedList();
 
         list.add(new Rectangle(10.0, 12.0));
-        list.add(new Square(5, 5));
     }
 }
