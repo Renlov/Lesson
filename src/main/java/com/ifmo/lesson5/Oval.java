@@ -1,11 +1,16 @@
 package com.ifmo.lesson5;
 
 public class Oval extends Shape {
+    private double a;
+    private double b;
+
     public Oval(double a, double b) {
-        super(a, b);
+        this.a = a;
+        this.b = b;
     }
+
     @Override
-    public void area(double a, double b){
-        double area = Math.PI * a * b;
+    public double area() {
+        return Math.PI * a * b;
     }
 }

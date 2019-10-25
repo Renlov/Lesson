@@ -1,11 +1,16 @@
 package com.ifmo.lesson5;
 
 public class Triangle extends Shape {
+    private double a;
+    private double b;
+
     public Triangle(double a, double b) {
-        super(a, b);
+        this.a = a;
+        this.b = b;
     }
     @Override
-    public void area(double a, double b){
-        double area = (1.0/2.0) * a * b;
+    public double area() {
+        return (1.0/2.0) * a * b;
     }
+
 }

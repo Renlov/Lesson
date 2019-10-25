@@ -1,12 +1,14 @@
 package com.ifmo.lesson5;
 
-public class Circle extends Shape {
+public class Circle extends Oval {
+    private double a;
+    private double b;
+
     public Circle(double a, double b) {
         super(a, b);
     }
     @Override
-    public void area(double a, double b){
-        double area = 2 * Math.PI * a;
+    public double area() {
+        return 2 * Math.PI * (a * a);
     }
-
 }
