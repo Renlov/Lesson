@@ -1,5 +1,7 @@
 package com.ifmo.lesson5;
 
+import java.util.Arrays;
+
 /**
  * Односвязный список, где каждый предыдущий
  * элемент харнит ссылку на следующий. Список
@@ -90,5 +92,6 @@ public class LinkedList {
         LinkedList list = new LinkedList();
 
         list.add(new Rectangle(10.0, 12.0));
+        list.add(new Square(5, 5));
     }
 }
