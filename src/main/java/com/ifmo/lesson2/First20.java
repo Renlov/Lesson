@@ -11,7 +11,7 @@ public class First20 {
 
     private static void printSequence(int lastNumber){
 
-        for (int i = 0; i < lastNumber; i++) {
+        for (int i = 1; i <= lastNumber; i++) {
             System.out.println(1 << i);
         }
     }
