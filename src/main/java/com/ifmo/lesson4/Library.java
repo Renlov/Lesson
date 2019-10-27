@@ -37,10 +37,10 @@ package com.ifmo.lesson4;
  * </pre>
  */
 public class Library {
+    Shelf[] shelves;
 
     public Library(int maxBookKinds) {
-        // TODO implement
-        // Возможно здесь следует сынициализировать массив.
+        shelves = new Shelf[maxBookKinds];
     }
 
     /**
@@ -51,7 +51,19 @@ public class Library {
      * @return {@code True} if book successfully added, {@code false} otherwise.
      */
     public boolean put(Book book, int quantity) {
-        // TODO implement
+        ShelfIndex shelfIndex = findShelf(book);
+
+        if (shelfIndex.shelf != null) {
+            shelfIndex.shelf.quantity += quantity;
+
+            return true;
+        }
+
+        if (shelfIndex.index >= 0) {
+            shelves[shelfIndex.index] = new Shelf(book, quantity);
+
+            return true;
+        }
 
         return false;
     }
@@ -64,8 +76,43 @@ public class Library {
      * @return Actual number of books taken.
      */
     public int take(Book book, int quantity) {
-        // TODO implement
+        ShelfIndex shelfIndex = findShelf(book);
+
+        Shelf shelf = shelfIndex.shelf;
+
+        if (shelf != null) {
+            shelf.quantity -= quantity;
+
+            if (shelf.quantity <= 0) {
+                int taken = quantity + shelf.quantity;
+
+                shelves[shelfIndex.index] = null;
+
+                return taken;
+            }
+
+            return quantity;
+        }
 
         return 0;
+    }
+
+    private ShelfIndex findShelf(Book book) {
+        int nullIdx = -1;
+
+        for (int i = 0; i < shelves.length; i++) {
+            Shelf shelf = shelves[i];
+
+            if (shelf != null) {
+                if (shelf.book.author.equals(book.author)
+                        && shelf.book.title.equals(book.title)) {
+                    return new ShelfIndex(shelf, i);
+                }
+            } else {
+                nullIdx = i;
+            }
+        }
+
+        return new ShelfIndex(null, nullIdx);
     }
 }

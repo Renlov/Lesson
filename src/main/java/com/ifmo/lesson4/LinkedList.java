@@ -6,9 +6,7 @@ package com.ifmo.lesson4;
  * оканчивается ссылкой со значением {@code null}.
  */
 public class LinkedList {
-    /**
-     * Ссылка на первый элемент списка.
-     */
+    /** Ссылка на первый элемент списка. */
     private Item head;
 
     /**
@@ -19,12 +17,33 @@ public class LinkedList {
     public void add(Object val) {
         if (head == null) {
             head = new Item(val);
-        } else {
-            Item item = head;
-            while (item.next != null) {
-                item = item.next;
-            }
-            item.next = new Item(val);
+
+            return;
+        }
+
+        //noinspection ConstantConditions
+        find(-1).next = new Item(val);
+    }
+
+    private Item find(int i) {
+        if (head == null)
+            return null;
+
+        if (i == 0)
+            return head;
+
+        int cnt = 1;
+
+        for (Item prev = head;;) {
+            Item next = prev.next;
+
+            if (next == null)
+                return i < 0 ? prev : null;
+
+            if (cnt++ == i)
+                return next;
+
+            prev = next;
         }
     }
 
@@ -36,12 +55,9 @@ public class LinkedList {
      * или {@code null}, если не найдено.
      */
     public Object get(int i) {
-        if (i < 0) return null;
-        Item item = found(i);
-        if (item != null) {
-            return item.value;
-        }
-        return null;
+        Item item = find(i);
+
+        return item == null ? null : item.value;
     }
 
     /**
@@ -52,37 +68,26 @@ public class LinkedList {
      * @return Удаленное значение или {@code null}, если не найдено.
      */
     public Object remove(int i) {
-        if (i < 0) return null;
+        if (head == null)
+            return null;
 
         if (i == 0) {
-            Object val = head.value;
-            head = null;
-            return val;
+            Item h = head;
+
+            head = head.next;
+
+            return h.value;
         }
 
-        Item item = found(i - 1);
-        if (item != null) {
-            if (item.next != null) {
-                Object val = item.next.value;
-                item.next = item.next.next;
-                return val;
-            }
-        }
-        return null;
-    }
+        Item prev = find(i - 1);
+        Item cur;
 
-    /**
-     * Ищет объект с заданным индексом
-     * @param i Индекс, по которому будет производится поиск.
-     * @return Объект типа Item или {@code null}, если не найден
-     */
-    private Item found(int i) {
-        Item item = head;
-        for (int j = 0; j <= i; j++) {
-            if (item == null) return null;
-            if (j == i) return item;
-            item = item.next;
+        if (prev != null && (cur = prev.next) != null) {
+            prev.next = cur.next;
+
+            return cur.value;
         }
+
         return null;
     }
 }
