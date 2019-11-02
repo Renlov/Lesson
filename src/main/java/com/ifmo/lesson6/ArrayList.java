@@ -1,5 +1,6 @@
 package com.ifmo.lesson6;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -19,7 +20,21 @@ public class ArrayList implements List {
     private static final int DEFAULT_SIZE = 10;
 
     private Object[] values;
+    private int tail;
 
+    private class ArrayListIterator implements Iterator<Object>{
+
+        private int index;
+        @Override
+        public boolean hasNext() {
+            return index < tail;
+        }
+
+        @Override
+        public Object next() {
+            return get(index++);
+        }
+    }
     /**
      * Создаёт новый {@link #ArrayList} с размером внутреннего массива по умолчанию.
      */
@@ -37,33 +52,50 @@ public class ArrayList implements List {
         values = new Object[initialSize];
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void add(Object val) {
-        // TODO implement.
+        if (tail == values.length) reSize();
+        values[tail++] = val;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object get(int i) {
-        // TODO implement.
-
-        return null;
+        if (i < 0 || i >= tail) return null;
+        return values[i];
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object remove(int i) {
-        // TODO implement.
-
-        return null;
+        if (i < 0 || i >= tail) return null;
+        Object value = values[i];
+        for (int j = i; j < tail - 1; j++) {
+            values[j] = values[j + 1];
+        }
+        values[--tail] = null;
+        return value;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterator iterator() {
-        // TODO implement.
+        return new ArrayListIterator();
+    }
 
-        return null;
+    /**
+     * Метод расширяет внутренний массив в два раза
+     */
+    private void reSize() {
+        values = Arrays.copyOf(values, values.length * 2);
     }
 }
