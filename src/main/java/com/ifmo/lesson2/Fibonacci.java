@@ -17,7 +17,7 @@ public class Fibonacci {
             int first = 1;
             int second = 1;
             int temp;
-            for (int i = 2; i <= n; i++) {
+            for (int i = 2; i < n; i++) {
                 temp = second;
                 second += first;
                 first = temp;

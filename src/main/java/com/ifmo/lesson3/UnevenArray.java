@@ -10,19 +10,38 @@ public class UnevenArray {
      */
     public static void main(String[] args) {
         int[] unevenArray = unevenArray();
-        System.out.println(Arrays.toString(unevenArray));
-        for (int i = 49; i >= 0; i--) {
-            System.out.print(unevenArray[i] + " ");
-        }
-
-        // TODO implement
+        printArray(unevenArray);
+        printArrayReverse(unevenArray);
     }
 
     public static int[] unevenArray() {
-        int[] count = new int[50];
-        for (int i = 0, j = 1; i <count.length; i++, j+=2) {
-            count[i]=j;
+        int[] array = new int[50];
+        for (int i = 1, j = 0; i < 100; i += 2) {
+            array[j++] = i;
         }
-        return count;
+
+        return array;
+    }
+
+    private static void printArrayReverse(int[] array){
+        StringBuilder builder = new StringBuilder();
+        for (int i = array.length - 1; i >= 0; i--) {
+            builder.append(array[i]);
+            if(i > 0){
+                builder.append(" ");
+            }
+        }
+        System.out.println(builder);
+    }
+
+    private static void printArray(int[] array){
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            builder.append(array[i]);
+            if(i < array.length - 1){
+                builder.append(" ");
+            }
+        }
+        System.out.println(builder);
     }
 }

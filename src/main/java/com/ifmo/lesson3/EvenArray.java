@@ -1,6 +1,5 @@
 package com.ifmo.lesson3;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class EvenArray {
@@ -12,22 +11,32 @@ public class EvenArray {
      */
     public static void main(String[] args) {
         int[] evenArray = evenArray();
-        for (int i = 0; i < 10; i++) {
-            System.out.print(evenArray[i] + " ");
-            if (i == 9) System.out.println("\n");
-            // TODO implement
-        }
-        for (int i = 0; i <10; i++) {
-            System.out.println(evenArray[i]);
-
-
-        }
+        printArrayToLine(evenArray);
+        printArrayToColumn(evenArray);
     }
+
     public static int[] evenArray() {
-        int[] arr = new int[10];
-        for (int i = 2, j = 0; i <=20 ; i+=2, j++) {
-            arr[j] = i;
+        int[] array = new int[20];
+        int j = 0;
+        for (int i = 2; i <= 20; i += 2, j++) {
+            array[j] = i;
         }
-        return arr;
+        return Arrays.copyOf(array, j);
     }
+
+    private static void printArrayToLine(int[] array) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            builder.append(array[i]);
+            if(i < array.length - 1){
+                builder.append(" ");
+            }
+        }
+        System.out.println(builder);
+    }
+
+    private static void printArrayToColumn(int[] array){
+        Arrays.stream(array).forEach(System.out::println);
+    }
+
 }
