@@ -1,8 +1,6 @@
 package com.ifmo.lesson8;
 
 public interface List<T> extends Iterable<T> {
-    static <T> Iterable<T> of() {
-    }
 
     /**
      * Добавляет значение в конец списка.
