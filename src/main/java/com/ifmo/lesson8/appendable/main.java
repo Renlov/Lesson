@@ -8,7 +8,7 @@ public class main {
         String value = sa.append("one").append("two").append("three").value();
         //----------------------------
         System.out.println("==Integer==");
-        IntAppendable ia = new IntAppendable().append(1).append(4).append(5);
+        IntAppendable ia = (IntAppendable) new IntAppendable().append(1).append(4).append(5);
         System.out.println(ia.value());
 
         IntAppendable ia2 = new IntAppendable(10, new ArithmeticOperation<Integer>() {
@@ -19,8 +19,8 @@ public class main {
             }
         });
         //-----------------------------—
-        DoubleAppendable da = new DoubleAppendable().append(1.0).append(4.0);
-        System.out.println(da.value());
+        //DoubleAppendable da = new DoubleAppendable().append(1.0).append(4.0);
+        //System.out.println(da.value());
         DoubleAppendable da2 = new DoubleAppendable(1.3, new ArithmeticOperation() {
             @Override
             public Double apply(Object one, Object two) {
