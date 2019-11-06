@@ -3,56 +3,49 @@ import java.util.*;
 
 public class ClolectoinUnita {
     public static <T> Iterable<T> view(Iterable<T>... iterables) {
-     //   if (iterables.length == 0) return List.of();
-       // return new Iterable<T>() {
-         //   @Override
-           // public Iterator<T> iterator() {
-             //   return new Iterator<T>() {
-               //     private int pos;
-                 //   private Iterator<T> current;
+        if (iterables.length == 0) return List.of();
+        return new Iterable<T>() {
+            @Override
+            public Iterator<T> iterator() {
+                return new Iterator<T>() {
+                    private int pos;
+                    private Iterator<T> current;
 
-     //               @Override
-       //             public boolean hasNext() {
-         //               if (current == null)
-           //                 current = iterables[pos].iterator();
-//
-  //                      if (!current.hasNext()) {
- //                           pos++;
-//
-  //                          if (pos < iterables.length) {
-    //                            current = iterables[pos].iterator();
-      //                      } else {
-        //                        return false;
-          //                  }
-            //            }
-              //          return current.hasNext();
-//
-  //                  }
-//
-  //                  @Override
-    //                public T next() {
-      //                  return current.next();
-        //            }
-//
-  //              };
-    //        }
+                    @Override
+                    public boolean hasNext() {
+                        if (current == null)
+                            current = iterables[pos].iterator();
 
-      //  };
- //   }
+                        if (!current.hasNext()) {
+                            pos++;
 
+                            if (pos < iterables.length) {
+                                current = iterables[pos].iterator();
+                            } else {
+                                return false;
+                            }
+                        }
+                        return current.hasNext();
 
-        //itetable[] iterables
-        //iterable arg
-        //hasNext();  проверяет, есть ли итератор (в конце вернет false)
-        //Next(); текущий итератор (в конце вернет true, если итератор в конце)
-       ArrayList<T> arg = new ArrayList<>();
-              for(Iterable<T> iterable : iterables) {
-                for (T t : iterable) {
-                  arg.add(t);
+                    }
+
+                    @Override
+                    public T next() {
+                        return current.next();
+                    }
+                };
             }
-              }
-           return arg;
-         }
+        };
+    }
+
+      // ArrayList<T> arg = new ArrayList<>();
+        //      for(Iterable<T> iterable : iterables) {
+          //      for (T t : iterable) {
+            //      arg.add(t);
+      //      }
+       //       }
+         //  return arg;
+        // }
         public static void main (String[] args){
             List<String> list1 = new ArrayList<>();
             List<String> list2 = new LinkedList<>();
