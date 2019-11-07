@@ -40,15 +40,12 @@ public class TopWords {
     }
 
     public static Map<String, Integer> top10Words(List<String> lines) {
-        HashMap <String, Integer> map = new HashMap<>();
-        for (String word : lines){
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String word : lines) {
             if (!map.containsKey(word)) map.put(word, 1);
-            else map.put(word, map.get(word)+1);
-        }
-        for(Integer one : map.values()){
-            //preorityQue
-        }
+            else map.put(word, map.get(word) + 1);
 
+        }
         return Map.of();
     }
 
