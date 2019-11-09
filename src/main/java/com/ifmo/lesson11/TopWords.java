@@ -3,15 +3,13 @@ package com.ifmo.lesson11;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TopWords {
     public static void main(String[] args) throws IOException {
         // Создаем файл, указывая путь к текстовому файлу на диске
-        File text = new File("wap.txt");
+        File text;
+        text = new File("c:/test/Lesson/src/main/resources/wap.txt");
 
         // Вычитываем все строки из файла
         List<String> lines = Files.readAllLines(text.toPath());
@@ -44,9 +42,9 @@ public class TopWords {
         for (String word : lines) {
             if (!map.containsKey(word)) map.put(word, 1);
             else map.put(word, map.get(word) + 1);
-
         }
-        return Map.of();
+
+    return map;
     }
 
 
