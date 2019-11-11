@@ -19,8 +19,8 @@ public class main {
             }
         });
         //-----------------------------—
-        //DoubleAppendable da = new DoubleAppendable().append(1.0).append(4.0);
-        //System.out.println(da.value());
+        DoubleAppendable da = (DoubleAppendable) new DoubleAppendable().append(1.0).append(4.0);
+        System.out.println(da.value());
         DoubleAppendable da2 = new DoubleAppendable(1.3, new ArithmeticOperation() {
             @Override
             public Double apply(Object one, Object two) {
