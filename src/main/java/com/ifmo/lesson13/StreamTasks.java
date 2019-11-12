@@ -16,7 +16,17 @@ public class StreamTasks {
             this.age = age;
             this.country = country;
         }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "name='" + name + '\'' +
+                    ", age=" + age +
+                    ", country='" + country + '\'' +
+                    '}';
+        }
     }
+
 
     public static void main(String[] args) {
         Stream<Person> people = generatePeople(100);
@@ -24,6 +34,8 @@ public class StreamTasks {
         List<String> countries = countriesSortedByTheirPopulationDescending(people);
         String countryThatHasMostKids = countryThatHasMostKids(people);
         Map<String, Long> populationByCountry = populationByCountry(people);
+
+        System.out.println();
 
         System.out.println(countries);
         System.out.println(countryThatHasMostKids);
@@ -60,6 +72,7 @@ public class StreamTasks {
                 .max(Comparator.comparingLong(Map.Entry::getValue))
                 .map(Map.Entry::getKey)
                 .orElse("Unknown");
+
     }
 
     // Метод возвращает карту стран их населения.
@@ -77,10 +90,11 @@ public class StreamTasks {
         // TODO implement.
         var rnd = new Random(80);
         int rnx = rnd.nextInt();
-        Stream people = Stream.generate(
-                () -> new Person(NAMES.get(rnd.nextInt(NAMES.size())), rnx, COUNTRIES.get(rnd.nextInt(COUNTRIES.size())))
+        var rnd1 = new Random(0);
+        return Stream.generate(
+                //() -> new Person(NAMES.get(rnd1.nextInt(NAMES.size())), rnx, COUNTRIES.get(rnd1.nextInt(COUNTRIES.size())))
+                () -> new Person("Mike", 23, COUNTRIES.get(rnd1.nextInt(COUNTRIES.size())))
         );
-        return people;
     }
 
     // Метод возвращает карту сгруппированных слов по их длине. Например, для
