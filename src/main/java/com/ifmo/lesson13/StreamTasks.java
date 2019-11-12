@@ -23,7 +23,7 @@ public class StreamTasks {
 
         List<String> countries = countriesSortedByTheirPopulationDescending(people);
         String countryThatHasMostKids = countryThatHasMostKids(people);
-        Map<String, Integer> populationByCountry = populationByCountry(people);
+        Map<String, Long> populationByCountry = populationByCountry(people);
 
         System.out.println(countries);
         System.out.println(countryThatHasMostKids);
@@ -38,11 +38,7 @@ public class StreamTasks {
         System.out.println(wordsByLength);
         System.out.println(averageWordLength);
         System.out.println(longestWords);
-        for (String name: generatePeople(10)
-             ) {
-            System.out.println(name);
 
-        }
     }
 
     // Метод возвращает страны в порядке убывания их населения.
