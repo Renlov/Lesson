@@ -92,8 +92,8 @@ public class StreamTasks {
         int rnx = rnd.nextInt();
         var rnd1 = new Random(0);
         return Stream.generate(
-                //() -> new Person(NAMES.get(rnd1.nextInt(NAMES.size())), rnx, COUNTRIES.get(rnd1.nextInt(COUNTRIES.size())))
-                () -> new Person("Mike", 23, COUNTRIES.get(rnd1.nextInt(COUNTRIES.size())))
+                () -> new Person(NAMES.get(rnd1.nextInt(NAMES.size())), rnx, COUNTRIES.get(rnd1.nextInt(COUNTRIES.size())))
+                //() -> new Person("Mike", 23, COUNTRIES.get(rnd1.nextInt(COUNTRIES.size())))
         );
     }
 
