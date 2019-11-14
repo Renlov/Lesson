@@ -56,7 +56,14 @@ public class StreamTasks {
     // Метод возвращает страны в порядке убывания их населения.
     public static List<String> countriesSortedByTheirPopulationDescending(Stream<Person> people) {
         // TODO implement.
-       // Map<String, Person> result =
+        //1 получить страны и их население
+        Map<String, Long> popIntCountry = people.collect(Collectors.groupingBy(person -> person.country, Collectors.counting()));
+        //2 отсортировать в порядке их убывания
+        popIntCountry.entrySet().stream().sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+        //3 преобразовать тллько в страны
+        .map(entry -> entry.getKey())
+                //собираем в список
+                .collect(Collectors.toList());
         return List.of();
     }
 
@@ -109,8 +116,11 @@ public class StreamTasks {
     // Метод находит среднюю длину слов в списке.
     public static int averageWordLength(List<String> words) {
         // TODO implement.
-
-        return 0;
+        int sum = words.stream()
+                .map(word -> word.length())
+                .reduce((a, b) -> a+b)
+                .orElse(0);
+        return sum / words.size();
     }
 
     // Метод находит самое длинное слово или слова, если таких несколько.
