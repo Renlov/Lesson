@@ -1,5 +1,7 @@
 package com.ifmo.lesson14.calc;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /*
@@ -42,8 +44,8 @@ public class SimpleCalc {
     }
 
     static int calculate(String line) throws CalcException {
-        if (!line.contains("+") && !line.contains("-"))
-            throw new CalcException("Expression must contain '+' or '-': " + line);
+        if (!line.contains("+") && !line.contains("-") && !line.contains("="))
+            throw new CalcException("Expression must contain '+' or '-' or '=' : " + line);
 
         String[] operands = line.split(" ");
 
@@ -51,7 +53,12 @@ public class SimpleCalc {
             throw new CalcException("Expression must have only 3 operands separated with space (e.g. 2 + 4): " + line);
 
         OPERATOR operator = OPERATOR.parse(operands[1]);
-
+        Map<String, Integer> map = new HashMap<>();
+        if (operator == OPERATOR.EQUALLY) {
+            String op1 = String.valueOf(parseOperand(operands[0]));//метод, число или нети
+            int op2 = parseOperand(operands[2]);
+            if(map.get().equals(op1))
+        }
         int op1 = parseOperand(operands[0]);
         int op2 = parseOperand(operands[2]);
 
@@ -68,7 +75,7 @@ public class SimpleCalc {
     }
 
     private enum OPERATOR {
-        PLUS, MINUS, PRIATION;
+        PLUS, MINUS, EQUALLY;
 
         int apply(int arg1, int arg2) throws CalcException {
             switch (this) {
@@ -90,10 +97,14 @@ public class SimpleCalc {
 
                 case "-":
                     return MINUS;
+
+                case "=":
+                    return EQUALLY;
             }
 
             throw new CalcException("Incorrect operator: " + str);
         }
 
+        }
     }
-}
+
