@@ -21,6 +21,7 @@ import java.util.Scanner;
  * если имя переменной не найдено или использовался неверный синтаксис.
  */
 public class SimpleCalc {
+    private static Map<String, Integer> map = new HashMap<>();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -53,14 +54,17 @@ public class SimpleCalc {
             throw new CalcException("Expression must have only 3 operands separated with space (e.g. 2 + 4): " + line);
 
         OPERATOR operator = OPERATOR.parse(operands[1]);
-        Map<String, Integer> map = new HashMap<>();
         if (operator == OPERATOR.EQUALLY) {
-            String op1 = String.valueOf(parseOperand(operands[0]));//метод, число или нети
             int op2 = parseOperand(operands[2]);
-            if(map.get().equals(op1))
+            map.put(operands[0], op2);
+            return op2;
         }
-        int op1 = parseOperand(operands[0]);
-        int op2 = parseOperand(operands[2]);
+        int op1 = map.containsKey(operands[0]) ? map.get(operands[0]) : parseOperand(operands[0]);
+        int op2 = map.containsKey(operands[2]) ? map.get(operands[2]) : parseOperand(operands[2]);
+        //if(map.containsKey(operands[0])) {map.get(operands[0]);}
+        //else {parseOperand(operands[0]);}
+        //if(map.containsKey(operands[2])) {map.get(operands[2]);}
+        //else {parseOperand(operands[2]);}
 
         return operator.apply(op1, op2);
     }
@@ -104,7 +108,5 @@ public class SimpleCalc {
 
             throw new CalcException("Incorrect operator: " + str);
         }
-
-        }
     }
-
+}
