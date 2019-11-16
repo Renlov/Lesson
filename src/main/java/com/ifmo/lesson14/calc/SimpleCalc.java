@@ -61,8 +61,8 @@ public class SimpleCalc {
         }
         int op1 = map.containsKey(operands[0]) ? map.get(operands[0]) : parseOperand(operands[0]);
         int op2 = map.containsKey(operands[2]) ? map.get(operands[2]) : parseOperand(operands[2]);
-        //if(map.containsKey(operands[0])) {map.get(operands[0]);}
-        //else {parseOperand(operands[0]);}
+//        if(map.containsKey(operands[0])) {map.get(operands[0]);}
+//        else {parseOperand(operands[0]);}
         //if(map.containsKey(operands[2])) {map.get(operands[2]);}
         //else {parseOperand(operands[2]);}
 
