@@ -1,6 +1,7 @@
 package com.ifmo.lesson15;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 /*
@@ -30,6 +31,7 @@ public class IOStreamTasks {
             int len;
             while ((len = src.read(buf)) > 0)
                 dst.write(buf, 0, len);
+            dst.flush();
         }
     /**
      * Последовательно разбивает файл на несколько более мелких, равных
@@ -44,7 +46,18 @@ public class IOStreamTasks {
      */
     public static List<File> split(File file, File dstDir, int size) throws IOException {
         List<File> list = new ArrayList<>();
-        return List.of();
+        FileInputStream in = new FileInputStream(file);
+        byte[] buf = new byte[size];
+        int len;
+        String fileName = file.getName();
+        while((len = in.read(buf)) > 0){
+            File newFile = new File(dstDir.getAbsolutePath() + "/" + fileName + "/");
+            list.add(newFile);
+            try (OutputStream out = new FileOutputStream(newFile)) {
+                out.write(buf, 0, len);
+            }
+        }
+        return list;
     }
 
     /**
@@ -55,9 +68,13 @@ public class IOStreamTasks {
      * @throws IOException Будет выброшен в случае ошибки.
      */
     public static void assembly(List<File> files, File dst) throws IOException {
-
+        try (FileOutputStream fos = new FileOutputStream(dst);
+             BufferedOutputStream mergingStream = new BufferedOutputStream(fos)) {
+            for (File f : files) {
+                Files.copy(f.toPath(), mergingStream);
+            }
+        }
     }
-
     /**
      * Шифрует/дешифрует поток с помощью XOR. В качестве ключа используется пароль.
      *
