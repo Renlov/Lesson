@@ -19,6 +19,15 @@ public class Server {
 
             //ждем и читаем сообщение от клиента
             Object request = objIn.readObject();
+
+            //Обрабатываем команду
+            if (request instanceof Echo) {
+                objOut.writeObject(request);
+            }
+            else {
+                System.out.println("Unknown command" + request);
+            }
+            socket.close();
         }
     }
 }
