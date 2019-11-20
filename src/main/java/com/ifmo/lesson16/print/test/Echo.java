@@ -8,4 +8,11 @@ public class Echo implements Serializable {
     public Echo(String test) {
         this.test = test;
     }
+
+    @Override
+    public String toString() {
+        return "Echo{" +
+                "test='" + test + '\'' +
+                '}';
+    }
 }
