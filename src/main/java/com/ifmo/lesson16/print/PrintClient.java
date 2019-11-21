@@ -44,6 +44,7 @@ public class PrintClient {
 
                 continue;
             }
+            else if("/ping".equals(msg))
 
             buildAndSendMessage(msg);
         }
