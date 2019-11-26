@@ -8,25 +8,23 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-        Person ivan = new Person("Иван");
-        for (Money money : ivan.getAllMoney()) {
-            System.out.println(ivan.name + " имеет заначку в размере " + money.getAmount() + " " + money.getCurrencyName());
-        }
-    }
+        //Блок 2.
+        //Вызов для Object
+        new Tree().info((Object)new Integer("4"));
+        new Tree().info((Object)new Short("4"));
+        new Tree().info((Object)new BigDecimal("4"));
 
-    static class Person {
-        public String name;
+        //Блок 3.
+        //Вызов для Number
+        new Tree().info(new Integer("4"));
+        new Tree().info(new Short("4"));
+        new Tree().info(new BigDecimal("4"));
 
-        Person(String name) {
-            this.name = name;
-            this.allMoney = new ArrayList<Money>();
-            //напишите тут ваш код
-        }
-
-        private List<Money> allMoney;
-
-        public List<Money> getAllMoney() {
-            return allMoney;
-        }
+        //Блок 4.
+        //Вызов для String
+        new Tree().info(new String("4"));
+        new Tree().info(new Integer("4").toString());
+        new Tree().info(new Short("4").toString());
+        new Tree().info(new BigDecimal("4").toString());
     }
 }
