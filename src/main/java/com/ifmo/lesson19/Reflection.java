@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Reflection {
     private int i;
-    private String s;
+    private String s = "Lol";
     private List list;
 
 //    public Reflection(int i, String s) {
