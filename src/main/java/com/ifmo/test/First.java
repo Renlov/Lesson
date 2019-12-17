@@ -12,14 +12,14 @@ public class First {
 
 class Barrier extends Thread {
     private int i = 0;
-    public synchronized void await() throws InterruptedException {
+    void await() throws InterruptedException {
         synchronized (this) {
             if (i == 3) {
                 System.out.println("potoki zapucheni");
                 notifyAll();
             } else {
                 i++;
-                Thread.sleep(1000);
+                wait();
             }
         }
     }
@@ -27,7 +27,7 @@ class Barrier extends Thread {
     public void run(){
         try {
             System.out.println("sozdaem potok " + Thread.currentThread().getName());
-//Thread.sleep(1000);
+            Thread.sleep(1000);
         } catch (Exception e) {}
     }
 }
